@@ -1,0 +1,25 @@
+<VirtualHost *>
+	
+  ServerAdmin sysops@nonutc.fr 
+  AccessFileName .htaccess
+  ServerName stressme.piwik.org
+  DocumentRoot /home/www/stressme.piwik.org/
+  
+  <Directory />
+    Options FollowSymLinks
+    AllowOverride None
+  </Directory>
+
+  <Directory /home/www/stressme.piwik.org/ >
+    Options Indexes FollowSymLinks MultiViews
+    AllowOverride None
+    Order allow,deny
+    allow from all
+  </Directory>
+
+  ErrorLog /var/log/apache2/error.log
+  LogLevel warn
+  CustomLog /var/log/apache2/stressme.log combinedcookie-stressme
+  ServerSignature Off
+
+</VirtualHost>

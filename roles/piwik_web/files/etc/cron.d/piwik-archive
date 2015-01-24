@@ -1,0 +1,4 @@
+MAILTO="matthieu.aubry@gmail.com"
+1 0 * * * www-data /home/www/scripts/piwik-archive.sh > /dev/null
+1 * * * * www-data /home/www/scripts/piwik-archive-today.sh > /dev/null
+

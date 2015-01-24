@@ -1,0 +1,54 @@
+#!/bin/sh
+
+#
+# This script creates a new svn repository.
+#
+# It does 3 things:
+#  - Create the repository using name supplied on the command-line
+#  - Create the default groups based on the repository name:
+#      $name_svn-ro and $name_svn-rw
+#  - Create an initial tree and import it
+#
+
+if [ $# -lt 1 ]; then
+  echo 'This script removes (and backups) a SVN repository.'
+  echo Usage: `basename $0` name
+  exit 1
+fi
+
+svnbase=/home/svn
+tracbase=/home/trac
+
+name=$1
+
+rep=$svnbase/$name
+tracpath=$tracbase/$name
+
+# Sanity checks
+[ ! -d $rep ] && echo "$rep does not exist, bailing out." && exit 1
+
+[ -d $tracpath ] && echo "$name is bound to a trac installation. Remove it first." && exit 1
+
+echo -n "Backing up the repository $name: "
+
+tar cvjf ${name}_backup.tar.bz2 $rep
+
+if [ $? != 0 ]; then
+  echo "Failed to backup the repository."
+  exit 1;
+fi
+
+echo "Ok."
+
+rwgrp=${name}-rw
+rogrp=${name}-ro
+admgrp=${name}-adm
+
+delgroup $rwgrp
+delgroup $rogrp
+delgroup $admgrp
+
+rm -rf $rep
+rm -f /etc/apache2/conf.d/svn${name}.cf
+/usr/sbin/apache2ctl restart
+

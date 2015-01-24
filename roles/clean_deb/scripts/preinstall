@@ -1,0 +1,7 @@
+#!/bin/bash -e
+
+apt-get remove --purge -qq -y exim4* nfs-common portmap
+update-inetd --disable auth
+update-inetd --disable ident
+/etc/init.d/openbsd-inetd restart
+ 

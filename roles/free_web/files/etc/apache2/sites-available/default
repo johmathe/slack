@@ -1,0 +1,25 @@
+NameVirtualHost *
+<VirtualHost *>
+	
+  ServerAdmin sysops@nonutc.fr 
+  AccessFileName .htaccess
+  DocumentRoot /home/www/dev5.piwik.org/
+  
+  <Directory />
+    Options FollowSymLinks
+    AllowOverride None
+  </Directory>
+
+  <Directory /home/www/dev5.piwik.org/ >
+    Options Indexes FollowSymLinks MultiViews
+    AllowOverride None
+    Order allow,deny
+    allow from all
+  </Directory>
+
+  ErrorLog /var/log/apache2/error.log
+  LogLevel warn
+  CustomLog /var/log/apache2/access.log combined
+  ServerSignature Off
+
+</VirtualHost>

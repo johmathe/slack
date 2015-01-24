@@ -1,0 +1,9 @@
+#!/bin/bash
+
+DEST=/home/backuppc
+mkdir -p $DEST
+chown backuppc $DEST
+chmod 700 $DEST
+/etc/init.d/backuppc restart
+test -e ~backuppc/.ssh/id_rsa.pub || ssh-keygen -t rsa
+

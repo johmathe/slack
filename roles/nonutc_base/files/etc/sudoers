@@ -1,0 +1,4 @@
+#sudoers
+# $Id: sudoers 8 2008-03-19 21:20:42Z johmathe $
+root    ALL=(ALL) ALL
+%sysops  ALL=(ALL) ALL

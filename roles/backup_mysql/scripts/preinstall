@@ -1,0 +1,11 @@
+#!/bin/bash
+
+BACKUP_PATH=/home/backups/backup_mysql.sql
+
+if [ ! -d "$(dirname $BACKUP_PATH)" ]; then
+  mkdir -m 700 "$(dirname $BACKUP_PATH)" 
+fi
+touch $BACKUP_PATH
+
+chmod 600 $BACKUP_PATH
+echo "MYSQL_BACKUP=$BACKUP_PATH" >> /etc/backup-files.conf

@@ -1,0 +1,2 @@
+MAILTO=sysops@nonutc.fr
+0 * * * * www-data rsync -r rsync-slaves@server50881:/home/www/* /home/www/

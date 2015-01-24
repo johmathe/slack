@@ -1,0 +1,35 @@
+#!/bin/bash
+
+echo "Stopping apache2 service..."
+service apache2 stop
+
+# Move the documentroot directory
+umask 002
+mkdir /home/www
+chown root.www-data /home/www
+if [ ! -h /var/www ]; then
+  cp -av /var/www/* /home/www/
+  rm -rf /var/www
+  ln -snf /home/www /var/www
+fi
+
+# ssl certs permissions
+chown root.ssl-cert /etc/ssl/private/bach.nonutc.fr.key
+chmod 640 /etc/ssl/private/bach.nonutc.fr.key
+
+# enable modules
+
+echo "Enabling apache2 modules..."
+MODULES="authnz_external authz_unixgroup userdir rewrite ssl"
+for i in $MODULES; do
+  a2enmod $i;
+done
+
+echo "Enabling default sites..."
+a2dissite 000-default
+a2ensite bach.nonutc.fr
+a2ensite bach.nonutc.fr-ssl
+
+
+echo "Restarting apache2 service..."
+service apache2 start

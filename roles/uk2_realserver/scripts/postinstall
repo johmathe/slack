@@ -1,0 +1,6 @@
+#!/bin/bash
+
+sysctl -p /etc/sysctl.conf
+
+ifconfig lo:0 83.170.87.208 netmask 255.255.255.255 -arp up
+

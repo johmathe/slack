@@ -1,0 +1,45 @@
+# This is used for the web-based php version of texdoctk,
+# it needs libapache2-mod-php4 or libapache2-mod-php5
+# just try 
+# http://localhost/texmf-tetex/doc/texdoc.php or
+# http://localhost/doc/tetex-doc/texdoc.php 
+#
+<IfModule mod_php5.c>
+  Alias /texmf-tetex /usr/share/texmf-tetex
+  <Directory /usr/share/texmf-tetex>
+    Options Indexes MultiViews FollowSymlinks
+    AllowOverride None
+    Order deny,allow
+    Deny from all
+    Allow from 127.0.0.0/255.0.0.0 ::1/128
+  </Directory>
+
+  Alias /texmf /usr/share/texmf
+  <Directory /usr/share/texmf>
+    Options Indexes MultiViews FollowSymlinks
+    AllowOverride None
+    Order deny,allow
+    Deny from all
+    Allow from 127.0.0.0/255.0.0.0 ::1/128
+  </Directory>
+</IfModule>
+
+<IfModule mod_php4.c>
+  Alias /texmf-tetex /usr/share/texmf-tetex
+  <Directory /usr/share/texmf-tetex>
+    Options Indexes MultiViews FollowSymlinks
+    AllowOverride None
+    Order deny,allow
+    Deny from all
+    Allow from 127.0.0.0/255.0.0.0 ::1/128
+  </Directory>
+
+  Alias /texmf /usr/share/texmf
+  <Directory /usr/share/texmf>
+    Options Indexes MultiViews FollowSymlinks
+    AllowOverride None
+    Order deny,allow
+    Deny from all
+    Allow from 127.0.0.0/255.0.0.0 ::1/128
+  </Directory>
+</IfModule>

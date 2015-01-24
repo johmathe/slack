@@ -1,0 +1,22 @@
+#!/bin/bash -e
+# $Id: postinstall 8 2008-03-19 21:20:42Z johmathe $
+/etc/init.d/openbsd-inetd restart
+/etc/init.d/postfix restart
+/etc/init.d/saslauthd restart
+/etc/init.d/spamassassin restart
+newaliases
+
+
+echo "First  time ? Think about chroot/sasl :
+rm -r /var/run/saslauthd/
+mkdir -p /var/spool/postfix/var/run/saslauthd
+ln -s /var/spool/postfix/var/run/saslauthd /var/run
+chgrp sasl /var/spool/postfix/var/run/saslauthd
+adduser postfix sasl
+--
+And also the sasl2 db (copy from /etc/sasldb2 to /var/spool/postfix/etc/...)
+--
+Spamassassin first install :
+wget http://spamassassin.apache.org/updates/GPG.KEY
+gpg --import GPG.KEY
+"

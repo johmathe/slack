@@ -1,0 +1,4 @@
+#!/bin/bash
+# $Id: preinstall 8 2008-03-19 21:20:42Z johmathe $
+apt-get -qq --assume-yes install nscd libnss-ldap libpam-ldap  
+

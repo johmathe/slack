@@ -1,0 +1,16 @@
+<VirtualHost *>
+  ServerAdmin sysops@nonutc.fr
+  ServerName tickets.nonutc.fr
+
+  RedirectMatch ^/$ /trac
+
+  DocumentRoot /home/www/trac
+
+ <Location /trac>
+   SetHandler mod_python
+   PythonHandler trac.web.modpython_frontend
+   PythonOption TracEnv /home/www/trac
+   PythonOption TracUriRoot /trac
+ </Location>
+
+</VirtualHost>

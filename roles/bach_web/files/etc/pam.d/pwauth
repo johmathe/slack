@@ -1,0 +1,18 @@
+#
+# The PAM configuration file for the `pwauth' service
+#
+
+# SB 2011-01-20 
+
+# Disallows other than root logins when /etc/nologin exists
+# (Replaces the `NOLOGINS_FILE' option from login.defs)
+auth       requisite  pam_nologin.so
+
+
+auth	   required   pam_succeed_if.so use_uid user = www-data
+# Standard Un*x authentication.
+@include common-auth
+
+account	   required   pam_localuser.so
+# Standard Un*x account
+@include common-account

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+BACKUP_PATH=/home/backups/backup_ldap.ldif
+
+if [ ! -d "$(dirname $BACKUP_PATH)" ]; then
+  mkdir -m 700 "$(dirname $BACKUP_PATH)" 
+fi
+touch $BACKUP_PATH
+
+chmod 600 $BACKUP_PATH
+echo "LDAP_BACKUPS=$BACKUP_PATH" >> /etc/backup-files.conf
+

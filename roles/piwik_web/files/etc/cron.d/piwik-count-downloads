@@ -1,0 +1,4 @@
+MAILTO="matthieu.aubry@gmail.com"
+10 0 * * * root /usr/bin/php5 /home/www/scripts/countPiwikDownloads.php > /dev/null
+*/2 * * * * root /usr/bin/php5 /home/www/scripts/countPiwikDownloadsToday.php > /dev/null
+

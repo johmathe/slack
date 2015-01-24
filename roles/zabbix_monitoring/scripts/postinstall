@@ -1,0 +1,6 @@
+#!/bin/bash -e
+if [ -f /etc/mysql/debian.cnf ]; then
+  chown zabbix /etc/mysql/debian.cnf
+fi
+/etc/init.d/zabbix-agent restart
+

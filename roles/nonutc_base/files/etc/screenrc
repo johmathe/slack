@@ -1,0 +1,8 @@
+# $Id: screenrc 8 2008-03-19 21:20:42Z johmathe $
+# Screen configuration johmathe
+bind T screen -t '% |top' top 
+bind R screen -t '% |root:' su
+startup_message off
+caption always "%{wb}%n%f %t %{wk} %?%-Lw%?%{wb}[%n*%f %t]%?(%u)%?%{wk}%?%+Lw%? %{wk}"
+hardstatus alwayslastline "%{+b kr}host: %{kw}%H%{kg} %c - %D %d.%m.%Y %{kr}(load: %l) %-26=%1`"
+

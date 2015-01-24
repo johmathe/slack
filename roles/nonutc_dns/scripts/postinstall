@@ -1,0 +1,4 @@
+#!/bin/bash -e
+# $Id$
+
+/etc/init.d/bind9 restart

@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# postgresql post installation script
+# This script moves the database to /home and creates a symbolic link in
+# /var/lib in order not to break anything
+
+DATA_OLDROOT=/var/lib/postgresql
+DATA_NEWROOT=/home/postgresql
+ 
+function die { echo $2; exit $1; }
+
+echo "Moving the data cluster to $DATA_NEWROOT...";
+
+if [ X`dpkg -s postgresql | awk '/Status:/ { print $3;}'` != 'Xok' ];
+then
+  die 'postgresql is not installed correctly, aborting.'
+fi
+
+VERSION=`dpkg -s postgresql | awk 'BEGIN { FS="-"; } ; /Depends:/ { print $2;}'`
+
+test -L $DATA_OLDROOT && die 0 'The cluster has already been moved, nothing to do.'
+
+echo 'Stopping the server...'
+service postgresql stop || die 0 'Failed to stop the server.';
+
+echo 'Moving config files...'
+mv /etc/postgresql/tmp-conf/* /etc/postgresql/$VERSION/main
+rmdir /etc/postgresql/tmp-conf
+
+echo "Moving the cluster to the new directory."
+mv -f $DATA_OLDROOT $DATA_NEWROOT
+chown -R postgres.postgres $DATA_NEWROOT
+ln -snf $DATA_NEWROOT $DATA_OLDROOT
+
+
+echo "Restarting the server..."
+service postgresql start || die 0 "Failed to restart the server.";
+echo "Move completed."
+

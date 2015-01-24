@@ -1,0 +1,6 @@
+[mysqld]
+server-id=2
+master-host = 192.168.1.10
+master-user = repl
+master-password = replication
+master-port = 3306

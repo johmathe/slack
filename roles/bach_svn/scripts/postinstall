@@ -1,0 +1,21 @@
+#!/bin/bash
+
+SVN_ROOT=/home/svn
+
+a2enmod ssl dav_svn
+cp /usr/share/doc/libapache2-mod-svn/examples/svnindex.xsl /var/www/
+chown root.www-data /var/www/svnindex.xsl
+chmod g+r /var/www/svnindex.xsl
+
+[ -d $SVN_ROOT ] && echo "$SVN_ROOT already exists, aborting." && exit 1;
+addgroup svnadm
+mkdir /home/svn
+chgrp svnadm /home/svn
+chmod 2770 /home/svn
+setfacl -d -m g:www-data:rwx /home/svn
+setfacl -m g:www-data:rwx /home/svn
+
+chmod 755 /usr/local/bin/svnnew
+chmod 755 /usr/local/bin/svndel
+
+service apache2 restart

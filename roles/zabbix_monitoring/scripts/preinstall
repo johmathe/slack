@@ -1,0 +1,7 @@
+#!/bin/bash -e
+
+if [ -f /etc/mysql/debian.cnf ]; then
+  chown zabbix /etc/mysql/debian.cnf
+fi
+
+apt-get install -y -qq zabbix-agent

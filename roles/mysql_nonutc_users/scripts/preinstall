@@ -1,0 +1,12 @@
+#!/bin/bash
+
+apt-get install -qq mysql-server  mysql-common
+mysql_dirs="/home/mysql/tmp /home/mysql/log/"
+mv /var/lib/mysql /home/mysql/database
+
+for dir in $mysql_dirs; do
+  chown mysql:mysql $dir
+  mkdir -p $dir
+done
+
+echo "Don't forget to fill the database"

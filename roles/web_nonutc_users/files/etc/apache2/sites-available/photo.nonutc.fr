@@ -1,0 +1,25 @@
+<VirtualHost *>
+	
+  ServerAdmin sysops@nonutc.fr 
+  AccessFileName .htaccess
+  ServerName photo.nonutc.fr
+  DocumentRoot /home/jlequeux/public_html/photo
+  
+  <Directory />
+    Options FollowSymLinks
+    AllowOverride All
+  </Directory>
+
+  <Directory /home/jlequeux/public_html/photo >
+    Options Indexes FollowSymLinks MultiViews
+    AllowOverride All
+    Order allow,deny
+    allow from all
+  </Directory>
+
+  ErrorLog /var/log/apache2/error.log
+  LogLevel warn
+  CustomLog /var/log/apache2/access.log combined
+  ServerSignature Off
+
+</VirtualHost>

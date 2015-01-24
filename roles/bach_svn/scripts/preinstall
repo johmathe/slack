@@ -1,0 +1,5 @@
+#!/bin/bash
+
+SVN_ROOT=/home/svn
+
+apt-get install -qq subversion subversion-tools libapache2-svn

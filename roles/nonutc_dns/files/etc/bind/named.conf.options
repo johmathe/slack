@@ -1,0 +1,31 @@
+acl "lan_v4" { 127.0.0.0/8; 192.168.127.0/24; 82.230.248.28; };
+acl "lan_v6" { ::1/128; 2002:52e6:f81c::/48; };
+
+options {
+	directory "/var/cache/bind";
+
+	// If there is a firewall between you and nameservers you want
+	// to talk to, you might need to uncomment the query-source
+	// directive below.  Previous versions of BIND always asked
+	// questions using port 53, but BIND 8.1 and later use an unprivileged
+	// port by default.
+
+	// query-source address * port 53;
+
+	// If your ISP provided one or more IP addresses for stable 
+	// nameservers, you probably want to use them as forwarders.  
+	// Uncomment the following block, and insert the addresses replacing 
+	// the all-0's placeholder.
+
+	// forwarders {
+	// 	0.0.0.0;
+	// };
+
+	auth-nxdomain no;    # conform to RFC1035
+
+	allow-recursion { "lan_v4"; "lan_v6"; };
+
+	listen-on-v6 { any; };
+
+};
+

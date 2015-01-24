@@ -1,0 +1,92 @@
+#!/bin/sh
+
+#
+# This script creates a new svn repository.
+#
+# It does 3 things:
+#  - Create the repository using name supplied on the command-line
+#  - Create the default groups based on the repository name:
+#      $name_svn-ro and $name_svn-rw
+#  - Create an initial tree and import it
+#
+
+if [ $# -lt 1 ]; then
+  echo 'This script creates a new SVN repository.'
+  echo Usage: `basename $0` name
+  exit 1
+fi
+
+svnbase=/home/svn
+
+name=$1
+
+rep=$svnbase/$name
+
+# Sanity checks
+[ -d $rep ] && echo "$rep already exists, bailing out." && exit 1
+
+echo -n "Creating the repository $name: "
+umask 002
+svnadmin create $rep
+if [ $? != 0 ]; then
+  echo "Failed to create the repository."
+  exit 1;
+fi
+
+echo "Ok."
+
+rwgrp=${name}-rw
+rogrp=${name}-ro
+admgrp=${name}-adm
+
+addgroup $rwgrp
+addgroup $rogrp
+addgroup $admgrp
+
+# Create the initial tree
+skeldir=`mktemp -d /tmp/new_project.XXXXX`
+
+mkdir $skeldir/trunk
+mkdir $skeldir/branches
+mkdir $skeldir/tags
+
+svn import $skeldir file://$rep -m "Initial tree import"
+rm -rf $skeldir
+setfacl -R -m g:$admgrp:rwX $rep
+setfacl -R -d -m g:$admgrp:rwX $rep
+
+# Create the apache configuration
+cf=svn$name.cf
+
+if [ -d $APACHECF ]; then
+  echo "Creating apache configuration file $cf." 
+  cat > $APACHECF/$cf << EOF
+<Location /svn/$name>
+        AuthType Basic
+        AuthBasicProvider external
+        AuthExternal pwauth
+        AuthName "$name Subversion repository"
+        AuthzUnixGroup on
+
+        Options Indexes FollowSymlinks
+
+        Order deny,allow
+        Deny from All
+        
+        # Read-only access
+        <Limit GET PROPFIND OPTIONS REPORT>
+          require valid-user
+          require group svnadm $rogrp $rwgrp
+          satisfy any
+        </Limit>
+
+        # Read-write access
+        <LimitExcept GET PROPFIND OPTIONS REPORT>
+          require valid-user
+          require group svnadm $rwgrp
+        </LimitExcept>
+</Location>
+EOF
+  chmod 644 $APACHECF/$cf
+  /usr/sbin/apache2ctl restart
+fi

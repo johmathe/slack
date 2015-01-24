@@ -1,0 +1,13 @@
+; 2002:52e6:f81c zone rdns
+;
+; $ORIGIN         c.1.8.f.6.e.2.5.2.0.0.2.ip6.arpa
+$TTL 84600
+@               IN      SOA     ns.nonutc.fr. root.nonutc.fr. (
+                2007090102      ; Serial
+		3600            ; Refresh serveur secondaire toutes les heures
+		900             ; Retry (1/4 d'heure)
+		604800          ; Expiration serveur secondaire 1 semaines
+		120 )           ; Min TTL (2 minutes)
+@		IN	NS	ns.nonutc.fr.
+
+1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0		IN	PTR	bach.nonutc.fr.

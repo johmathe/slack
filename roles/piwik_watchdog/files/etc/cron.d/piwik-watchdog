@@ -1,0 +1,2 @@
+MAILTO=sysops@nonutc.fr
+* * * * * root /etc/cron.d/scripts/piwik_watchdog.sh

@@ -1,0 +1,81 @@
+#!/bin/bash
+
+# This script creates a new trac project bound to the given SVN repository.
+
+if [ $# -lt 1 ]; then
+  echo This script creates a new trac installation bound to the SVN repository
+  echo given as a parameter. If the repository does not exist, it is 
+  echo not automatically created.
+  echo 'Usage : `basename $0` repository'
+  exit 1
+fi
+
+pjname=$1
+admingrp=$repname_adm
+svnpath=/home/svn/$pjname
+trac_dir=/home/trac/$pjname
+
+APACHECF=/etc/apache2/conf.d
+
+if [ -d $svnpath ]; then
+base_rights="BROWSER_VIEW LOG_VIEW FILE_VIEW CHANGESET_VIEW"
+python /usr/bin/trac-admin "$trac_dir" "initenv --inherit=/etc/trac/global.ini" "$pjname" "sqlite:db/trac.db" "svn" "$svnpath"
+else 
+base_rights=""
+python /usr/bin/trac-admin "$trac_dir" "initenv --inherit=/etc/trac/global.ini" "$pjname" "sqlite:db/trac.db" "" "" 
+fi
+[ $? != 0 ] && echo "Unable to create the project." && exit 1
+chown -R root.root $trac_dir
+chmod -R g+w,o-rwx $trac_dir
+setfacl -R -m g:$admgrp:rwX $trac_dir
+
+# Add groups
+rwgrp=${pjname}-rw
+rogrp=${pjname}-ro
+admgrp=${pjname}-adm
+
+addgroup $rwgrp
+addgroup $rogrp
+addgroup $admgrp
+
+# Create the apache configuration
+cf=trac$pjname.cf
+
+if [ -d $APACHECF ]; then
+  echo "Creating apache configuration file $cf."
+  cat > $APACHECF/$cf << EOF
+<Location /trac/$pjname>
+        SetHandler mod_python
+        PythonInterpreter main_interpreter
+        PythonHandler trac.web.modpython_frontend
+        PythonOption TracEnv /home/trac/$pjname
+        PythonOption TracUriRoot /trac/$pjname
+        PythonOption PYTHON_EGG_CACHE /tmp
+        SetEnv HTTPS 1
+
+        AuthType Basic
+        AuthBasicProvider external
+        AuthExternal pwauth
+        AuthName "$pjname trac platform"
+        AuthzUnixGroup on
+
+        Order allow,deny
+        Allow from All
+
+        require valid-user
+        require group $admgrp $rogrp $rwgrp
+</Location>
+EOF
+  chmod 644 $APACHECF/$cf
+  /usr/sbin/apache2ctl restart
+fi
+
+trac-admin $trac_dir permission remove anonymous '*'
+trac-admin $trac_dir permission remove authenticated '*'
+if [ -n "$base_rights" ]; then
+trac-admin $trac_dir permission add authenticated $base_rights
+fi
+trac-admin $trac_dir permission add authenticated MILESTONE_VIEW REPORT_VIEW REPORT_SQL_VIEW ROADMAP_VIEW SEARCH_VIEW TIMELINE_VIEW WIKI_VIEW 
+trac-admin $trac_dir permission add @$rogrp TICKET_CREATE
+trac-admin $trac_dir permission add @$rwgrp TICKET_MODIFY MILESTONE_ADMIN WIKI_ADMIN
+trac-admin $trac_dir permission add @$admgrp TRAC_ADMIN

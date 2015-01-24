@@ -1,0 +1,29 @@
+<VirtualHost *>
+	
+  ServerAdmin sysops@nonutc.fr 
+  AccessFileName .htaccess
+  ServerName gpiffaul.nonutc.fr
+  DocumentRoot /home/gpiffaul/public_html
+  
+  <Directory />
+    Options FollowSymLinks
+    AllowOverride None
+  </Directory>
+
+  <Directory /home/gpiffaul/public_html >
+    Options Indexes FollowSymLinks MultiViews
+    AllowOverride None
+    Order allow,deny
+    allow from all
+    AuthName "Protected"
+    AuthType Basic
+    AuthUserFile "/home/gpiffaul/.htpasswd"
+    Require valid-user
+   </Directory>
+
+  ErrorLog /var/log/apache2/error.log
+  LogLevel warn
+  CustomLog /var/log/apache2/access.log combined
+  ServerSignature Off
+
+</VirtualHost>

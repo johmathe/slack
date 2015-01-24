@@ -1,0 +1,35 @@
+<VirtualHost *>
+	ServerAdmin webmaster@nonutc.fr
+	ServerName sr05.nonutc.fr
+
+	DocumentRoot /home/www/sr05/
+
+        <Directory />
+                Options FollowSymLinks
+                AllowOverride None
+        </Directory>
+        <Directory /home/www/sr05 >
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride None
+                Order allow,deny
+                allow from all
+        </Directory>
+
+<Location /svn>
+  DAV svn
+  SVNPath /home/svn/sr05
+  SVNAutoversioning on
+  AuthzSVNAccessFile /home/johmathe/svn_access_file
+  AuthType Basic
+  AuthName "SVN - sr05"
+  AuthUserFile /home/johmathe/trac.htpasswd
+  Require valid-user
+</Location>
+
+	ErrorLog /var/log/apache2/error.log
+
+	# Possible values include: debug, info, notice, warn, error, crit,
+	# alert, emerg.
+	LogLevel warn
+
+</VirtualHost>

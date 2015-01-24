@@ -1,0 +1,4 @@
+#!/bin/bash -e
+
+/usr/bin/sa-learn --spam --mbox ~johmathe/Mail/Spam > /dev/null
+/usr/bin/sa-update 

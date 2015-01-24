@@ -1,0 +1,58 @@
+//
+// Do any local configuration here
+//
+
+zone "nonutc.fr" {
+	type master;
+  file "/etc/bind/db.nonutc.fr";
+};
+
+zone "johan.mathe.name" {
+	type master;
+  file "/etc/bind/db.johan.mathe.name";
+};
+
+zone "axelleetjulia.com" {
+	type master;
+  file "/etc/bind/db.axelleetjulia.com";
+};
+
+zone "johanmathe.name" {
+	type master;
+  file "/etc/bind/db.johanmathe.name";
+};
+
+zone "johmathe.name" {
+	type master;
+  file "/etc/bind/db.johmathe.name";
+};
+
+zone "johmathe.com" {
+	type master;
+  file "/etc/bind/db.johmathe.com";
+};
+
+zone "leezic.org" {
+  type master;
+  file "/etc/bind/db.leezic.org";
+};
+
+zone "arsindustrialis.org" {
+  type master;
+  file "/etc/bind/db.arsindustrialis.org";
+};
+
+zone "arsindustrialis.com" {
+  type master;
+  file "/etc/bind/db.arsindustrialis.com";
+};
+
+zone "arsindustrialis.net" {
+  type master;
+  file "/etc/bind/db.arsindustrialis.net";
+};
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bind/zones.rfc1918";
+

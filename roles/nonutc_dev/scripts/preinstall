@@ -1,0 +1,3 @@
+#!/bin/bash -e
+
+apt-get install -y txt2man php5-cli dupload reportbug build-essential libxml2-dev libxslt1-dev libavcodec-dev libavformat-dev libgd2-xpm-dev indent dpkg-dev build-essential fakeroot dh-make automake autoconf autotools-dev lintian libcrypto++-dev libcrypto++-utils 

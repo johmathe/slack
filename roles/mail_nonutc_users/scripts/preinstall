@@ -1,0 +1,15 @@
+#!/bin/bash -e
+
+apt-get install -qq postfix sasl2-bin libsasl2-2 libsasl2-modules
+apt-get install -qq openbsd-inetd postfix uw-imapd
+apt-get install -qq spamassassin spamc
+apt-get install -qq squirrelmail
+apt-get install -qq libnet-dns-perl
+
+if ! getent passwd spamd ; then
+  groupadd -g 5001 spamd
+  useradd -u 5001 -g spamd -s /sbin/nologin -d /var/lib/spamassassin spamd
+  mkdir /var/lib/spamassassin
+  chown spamd:spamd /var/lib/spamassassin
+fi
+

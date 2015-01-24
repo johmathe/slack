@@ -1,0 +1,25 @@
+<VirtualHost *>
+  ServerAdmin johmathe@nonutc.fr
+  ServerName leezic.nonutc.fr
+  CustomLog /var/log/apache2/access.log combined
+
+  <Directory />
+    Options FollowSymLinks
+    AllowOverride None
+  </Directory>
+
+  <Location /svn>
+    DAV svn
+    SVNPath /home/leezic/svn
+    AuthzSVNAccessFile /home/leezic/web/svn_access_file
+    AuthType Basic
+    AuthName "Leezic subversion repository"
+    AuthUserFile /home/leezic/web/leezic.htdigest
+    Require valid-user
+    Satisfy Any
+    Order allow,deny
+    Allow from all
+  </Location>
+
+</VirtualHost>
+

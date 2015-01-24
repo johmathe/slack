@@ -1,0 +1,4 @@
+#!/bin/bash -e
+/etc/init.d/nagios2 stop
+sleep 5
+/etc/init.d/nagios2 start

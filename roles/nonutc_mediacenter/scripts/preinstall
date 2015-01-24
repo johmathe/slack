@@ -1,0 +1,3 @@
+#!/bin/bash
+apt-get remove -f -q --purge gdm
+apt-get install -f -q mpd mpc ampache ampache-themes vlc ffmpeg mplayer freevo freevo-doc python-freevo freevo-data vlc openssh-server python-pylirc lirc-modules-source lirc

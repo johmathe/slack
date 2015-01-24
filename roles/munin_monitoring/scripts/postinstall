@@ -1,0 +1,9 @@
+#!/bin/bash -e
+
+
+/etc/init.d/munin-node restart
+
+ln -fs /usr/share/munin/plugins/apache_accesses /etc/munin/plugins/apache_accesses
+ln -fs /usr/share/munin/plugins/apache_processes /etc/munin/plugins/apache_processes
+ln -fs /usr/share/munin/plugins/apache_volume /etc/munin/plugins/apache_volume
+

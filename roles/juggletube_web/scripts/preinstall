@@ -1,0 +1,10 @@
+#!/bin/bash -e
+
+apt-get install -qq libapache2-mod-php5 php5-gd php5-mcrypt php5-curl php5-mysql 
+apt-get install -qq ffmpeg flvtool2 lame mplayer mencoder
+
+ln -sf /usr/bin/ffmpeg /usr/local/bin/ffmpeg
+ln -sf /usr/bin/mplayer /usr/local/bin/mplayer
+ln -sf /usr/bin/mencoder /usr/local/bin/mencoder
+ln -sf /usr/bin/lame /usr/local/bin/lame
+

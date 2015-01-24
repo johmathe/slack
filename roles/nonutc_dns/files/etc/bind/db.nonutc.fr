@@ -1,0 +1,120 @@
+$ORIGIN .
+$TTL 3600		; 1 hour
+nonutc.fr		IN SOA ks28105.kimsufi.com. johmathe.google.com. (
+				2014060201 ; serial
+				3600       ; refresh (1 hour)
+				1000       ; retry (5 minutes)
+				1296000    ; expire (1 week)
+				300        ; minimum (2 minutes)
+				)
+			NS	ks28105.kimsufi.com.
+			NS  ns6.gandi.net.
+      MX	10 epicurus.nonutc.fr.
+			MX	20 bach.nonutc.fr.
+
+
+$ORIGIN nonutc.fr.
+
+; Entrées A
+
+$TTL 3600
+;			AAAA
+;$TTL 120
+b4		      A	    82.230.248.28
+candide			A	    213.251.181.139
+d		    	  A	    82.127.13.207
+dublin      A     87.198.217.98
+republique	A	    82.230.249.100
+sf1         A     173.164.172.161
+sf2         A     173.164.172.162
+sf          A     24.6.41.2
+talleyrand	A	    88.178.252.191
+
+; bach.nonutc.fr: stephane's server
+
+bach			  A	  188.165.244.159
+b               CNAME   bach
+mx2			        CNAME bach
+
+; protagoras.nonutc.fr : meta services for nonutc
+
+protagoras      A       91.121.91.95
+                MX      10 protagoras
+backups         CNAME   protagoras
+conf            CNAME   protagoras
+doc             CNAME   protagoras
+ldap            CNAME   protagoras
+lists           CNAME   protagoras
+munin           CNAME   protagoras
+nagios          CNAME   protagoras
+p               CNAME   protagoras
+puppet          CNAME   protagoras
+slack           CNAME   protagoras
+tickets         CNAME   protagoras
+; proclos.nonuc.fr : brand new server for nonutc
+
+proclos         A   91.121.119.79
+
+; epicurus: replacement for proclos
+
+epicurus        A 91.121.112.17
+ai              CNAME epicurus
+alpha           CNAME epicurus
+annales			    CNAME	epicurus
+bivaudda		    CNAME	epicurus
+blog			      CNAME	epicurus
+cfouchet		    CNAME	epicurus
+chantiers       CNAME epicurus
+dlanguig		    CNAME	epicurus
+dsfw            CNAME epicurus
+e               CNAME epicurus
+elishowk    	  CNAME	epicurus
+elus		    	  CNAME	epicurus
+factux			    CNAME	epicurus
+faubrysa		    CNAME	epicurus
+films           CNAME epicurus
+gbarbaud		    CNAME	epicurus
+gpiffaul        CNAME epicurus
+ihs			        CNAME	epicurus
+imap			      CNAME	epicurus
+jlequeux		    CNAME	epicurus
+johmathe		    CNAME	epicurus
+julhirel		    CNAME	epicurus
+leezic          CNAME epicurus
+maberetz		    CNAME	epicurus
+malamare        CNAME epicurus
+marc			      CNAME	epicurus
+marsouil		    CNAME	epicurus
+mrobache		    CNAME	epicurus
+mublog          CNAME epicurus
+mx1			        CNAME	epicurus
+nicleroy        CNAME epicurus
+obscure			    CNAME	epicurus
+photo           CNAME epicurus
+photos			    CNAME	epicurus
+projetx			    CNAME	epicurus
+proxy			      CNAME	epicurus
+radio			      CNAME	epicurus
+rails			      CNAME	epicurus
+risk			      CNAME	epicurus
+sensiwatt       CNAME epicurus
+shotdetect		  CNAME	epicurus
+slievain		    CNAME	epicurus
+smtp            CNAME epicurus
+sr05			      CNAME	epicurus
+ssh			        CNAME	epicurus
+stats			      CNAME	epicurus
+suede			      CNAME	epicurus
+sustainable-developer CNAME epicurus
+tamere			    CNAME	epicurus
+tcavalie		    CNAME	epicurus
+term			      CNAME	epicurus
+u			          CNAME epicurus
+upload			    CNAME	epicurus
+users			      CNAME	epicurus
+video           CNAME epicurus
+webmail         CNAME epicurus
+willy			      CNAME	epicurus
+www			        CNAME	epicurus
+johmathe-new    CNAME epicurus
+

@@ -1,0 +1,18 @@
+#!/bin/bash
+apt-get remove -qq -y keepalived
+case "$1" in
+  uk2_load_balancer.master)
+    dpkg -i /tmp/keepalived_1.1.15-1_amd64.deb
+  ;;
+  uk2_load_balancer.slave)
+    dpkg -i /tmp/keepalived_1.1.15-1_i386.deb
+  ;;
+esac
+
+sysctl -p /etc/sysctl.conf
+
+#without restart, it crash
+/etc/init.d/keepalived restart
+/etc/init.d/pound restart
+
+echo "Don't forget to check the MX ip"

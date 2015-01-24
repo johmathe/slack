@@ -1,0 +1,7 @@
+#!/bin/bash -e
+
+# Starts the media center
+# I'm lazy. Quick and dirty.
+chmod 777 /dev/dsp
+/usr/bin/irexec /etc/freevo/lircrc&
+/usr/bin/freevo -fs

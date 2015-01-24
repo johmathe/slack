@@ -1,0 +1,3 @@
+#!/bin/bash
+
+apt-get install -qq apache2 apache2-suexec libapache2-mod-authnz-external libapache2-mod-authz-unixgroup pwauth

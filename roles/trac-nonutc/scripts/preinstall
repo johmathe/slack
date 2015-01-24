@@ -1,0 +1,3 @@
+#!/bin/bash
+
+apt-get install -qq -y trac libapache2-mod-python

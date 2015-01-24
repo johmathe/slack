@@ -1,0 +1,8 @@
+#!/bin/bash -e
+
+#Adding the non-free repository (unrar)
+sed -i.orig 's/ etch main$/ etch main non-free/' /etc/apt/sources.list && apt-get update
+
+
+apt-get install -qq irssi tofrodos subversion tetex-bin imagemagick mc zip unzip sl mailx unrar unzip mutt rtorrent texlive-latex-recommended texlive-fonts-recommended texlive-latex-base  texlive-latex-extra lmodern
+

@@ -1,0 +1,2 @@
+#!/bin/bash -e
+echo "Change trac path in /usr/local/scripts/dump_trac.sh"

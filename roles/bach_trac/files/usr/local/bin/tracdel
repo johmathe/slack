@@ -1,0 +1,49 @@
+#!/bin/bash
+
+# This script creates a new trac project bound to the given SVN repository.
+
+if [ $# -lt 1 ]; then
+  echo This script deletes a trac installation.
+  echo 'Usage : `basename $0` <installation name>'
+  exit 1
+fi
+
+pjname=$1
+trac_dir=/home/trac/$pjname
+svnpath=/home/svn/$pjname
+
+# Sanity checks
+[ ! -d $trac_dir ] && echo "$trac_dir does not exist, bailing out." && exit 1
+
+echo -n "Backing up the trac installation $pjname: "
+tar cvjf ${pjname}_trac_backup.tar.bz2 $trac_dir
+
+if [ $? != 0 ]; then
+  echo "Failed to backup the installation, aborting."
+  exit 1
+fi
+
+rm -rf $trac_dir
+
+APACHECF=/etc/apache2/conf.d
+
+rwgrp=${pjname}-rw
+rogrp=${pjname}-ro
+admgrp=${pjname}-adm
+
+# Remove groups iif there is no svn repository with the same name
+if [ ! -d $svnpath ]; then
+  echo "Removing stale user groups."
+  delgroup $rwgrp
+  delgroup $rogrp
+  delgroup $admgrp
+fi
+
+# Remove the apache config
+cf=trac$pjname.cf
+rm -rf $APACHECF/$cf
+/usr/sbin/apache2ctl restart
+
+echo "Done removing $pjname trac installation.".
+exit 0
+

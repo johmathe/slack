@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Create a folder for trac sites
+
+TRAC_ROOT=/home/trac
+
+echo "Creating the trac master directory as $TRAC_ROOT."
+[ ! -d /home/trac ] && mkdir -m 770 $TRAC_ROOT 
+chown root.root $TRAC_ROOT
+setfacl -d -m g:www-data:rwX $TRAC_ROOT
+setfacl -m g:www-data:rwx $TRAC_ROOT
+
+echo "Installing the tracunixgroup plugin."
+
+cd /tmp
+svn checkout http://trac-hacks.org/svn/tracunixgroupsplugin
+if [ -d tracunixgroupsplugin ]; then
+  cd tracunixgroupsplugin/anyrelease
+  python setup.py bdist_egg
+  easy_install dist/*
+  rm -rf tracunixgrousplugin
+  echo "done installing!"
+else
+  echo "failed to fetch the plugin."
+fi

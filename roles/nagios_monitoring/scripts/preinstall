@@ -1,0 +1,4 @@
+#!/bin/bash
+
+apt-get install -y -qq nagios2
+rm -f /etc/nagios2/conf.d/*

@@ -1,0 +1,3 @@
+#!/bin/bash -e
+
+nohup /usr/local/scripts/wrapper-fw.sh

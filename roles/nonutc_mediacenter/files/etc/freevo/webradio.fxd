@@ -1,0 +1,80 @@
+<?xml version="1.0" ?>
+<freevo>
+  <container title="Radiostations" type="webradio">
+                <audio title="France Inter">
+                        <url>http://www.tv-radio.com/station/france_inter_mp3/france_inter_mp3-128k.m3u</url>
+                        <info>
+                                <link>http://www.franceinter.fr</link>
+                                <bitrate>128k</bitrate>
+                                <description>France Inter.</description>
+                        </info>
+                        <playlist/>
+                        <reconnect/>
+                </audio>
+                <audio title="FIP">
+                        <url>http://www.tv-radio.com/station/fip_mp3/fip_mp3-128k.m3u</url>
+                        <info>
+                                <link>http://www.fip-radio.fr</link>
+                                <bitrate>128k</bitrate>
+                                <description>France Inter Paris.</description>
+                        </info>
+                        <playlist/>
+                        <reconnect/>
+                </audio>
+                <audio title="France Infos">
+                        <url>http://players.creacast.com/creacast/france_info/playlist.m3u</url>
+                        <info>  
+                                <link>http://www.france-infos.com</link>
+                                <bitrate>128k</bitrate>
+                                <description>France Infos.</description>
+                        </info>
+                        <playlist/>
+                        <reconnect/>
+                </audio>
+
+		<audio title="Le mouv">
+			<url>http://www.tv-radio.com/station/le_mouv_mp3/le_mouv_mp3-128k.m3u</url>
+                        <info>
+                                <link>http://www.lemouv.fr</link>
+                                <bitrate>128k</bitrate>
+                                <description>Le mouv.</description>
+                        </info>
+                        <playlist/>
+                        <reconnect/>
+                </audio>
+                <audio title="France culture">
+                        <url>http://www.tv-radio.com/station/france_culture_mp3/france_culture_mp3-128k.m3u</url>
+                        <info>
+                                <link>http://www.france-culture.fr</link>
+                                <bitrate>128k</bitrate>
+                                <description>France culture.</description>
+                        </info>
+                        <playlist/>
+                        <reconnect/>
+                </audio>
+                <audio title="France musique">
+                        <url>http://www.tv-radio.com/station/france_musique_mp3/france_musique_mp3-128k.m3u</url>
+                        <info>
+                                <link>http://www.france-musique.fr</link>
+                                <bitrate>128k</bitrate>
+                                <description>France musique.</description>
+                        </info>
+                        <playlist/>
+                        <reconnect/>
+                </audio>
+                <audio title="Europe 1">
+                        <url>http://webradio.europe1.fr/V4/europe1/europe1.m3u</url>
+                        <info>
+                                <link>http://www.europe1.fr</link>
+                                <bitrate>128k</bitrate>
+                                <description>Europe 1.</description>
+                        </info>
+                        <playlist/>
+                        <reconnect/>
+                </audio>
+    <info>
+      <description>Radio stations on the internet...</description>
+    </info>
+  </container>
+</freevo>
+

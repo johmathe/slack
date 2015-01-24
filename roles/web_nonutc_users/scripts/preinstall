@@ -1,0 +1,4 @@
+#!/bin/bash -e
+
+apt-get install -qq libapache2-mod-php5 php5-gd php5-mysql libapache2-svn 
+

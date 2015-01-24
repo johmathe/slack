@@ -1,0 +1,13 @@
+# Nonutc machines
+protagoras.nonutc.fr: nonutc_base zabbix_monitoring
+proclos.nonutc.fr:  nonutc_base ldap_auth zabbix_monitoring
+bach: zabbix_monitoring
+
+# Juggletube machines
+ball.juggletube.com: nonutc_base zabbix_monitoring ldap_auth
+
+# Piwik machines
+piwik: nonutc_base zabbix_monitoring ldap_auth
+piwik-sql: nonutc_base zabbix_monitoring ldap_auth piwik_sql
+phpmyvisites2: nonutc_base zabbix_monitoring ldap_auth
+

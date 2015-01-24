@@ -1,0 +1,36 @@
+<VirtualHost *>
+	ServerAdmin johan.mathe@nonutc.fr 
+	AccessFileName .htaccess
+
+       ServerName projetx.nonutc.fr 
+       DocumentRoot /home/projetx/public_html
+        <Directory />
+                Options FollowSymLinks
+                AllowOverride None
+        </Directory>
+
+        <Directory /home/projetx/public_html >
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride None
+                Order allow,deny
+                allow from all
+        
+	AuthUserFile /home/projetx/.projetx
+	AuthGroupFile /dev/null
+	AuthName "acces securise"
+	AuthType Basic
+	<Limit GET POST>
+	Require valid-user
+	</Limit>
+
+	</Directory>
+	ErrorLog /var/log/apache2/error.log
+
+	# Possible values include: debug, info, notice, warn, error, crit,
+	# alert, emerg.
+	LogLevel warn
+
+	CustomLog /var/log/apache2/access.log combined
+	ServerSignature Off
+
+</VirtualHost>

@@ -1,0 +1,10 @@
+<VirtualHost *>
+  ServerAdmin sysops@nonutc.fr
+  ServerName projetx.nonutc.fr
+
+  RedirectMatch ^/$ /trac
+
+  DocumentRoot /home/www/root
+
+
+</VirtualHost>

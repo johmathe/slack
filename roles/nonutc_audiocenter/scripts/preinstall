@@ -1,0 +1,3 @@
+#!/bin/bash
+mkdir -p /home/mpd/playlists/
+apt-get install xinit x11-xserver-utils python-pygame ripit openssh-server python-mpd python-serial mpd mpc ncmpcpp xserver-xorg-video-displaylink

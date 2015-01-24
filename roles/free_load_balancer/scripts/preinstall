@@ -1,0 +1,3 @@
+#!/bin/bash
+apt-get install -qq -y libc6 libpopt0 libssl0.9.8  ipvsadm iproute
+apt-get install -qq -y pound

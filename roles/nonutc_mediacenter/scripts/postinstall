@@ -1,0 +1,4 @@
+#!/bin/bash
+
+update-rc.d media-center defaults 99
+update-rc.d -f gdm remove

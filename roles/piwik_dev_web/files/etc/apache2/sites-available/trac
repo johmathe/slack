@@ -1,0 +1,46 @@
+# Dev Johan MATHE
+# Thu Sep  6 16:20:14 CEST 2007
+<VirtualHost *>
+	ServerAdmin admin@piwik.org
+	ServerName dev.piwik.org 
+
+        RedirectMatch ^/$ /trac
+
+	DocumentRoot /home/trac
+
+        <Directory />
+                Options FollowSymLinks
+                AllowOverride None
+        </Directory>
+
+<Location /svn>
+  DAV svn
+  SVNPath /home/svn/piwik
+  AuthzSVNAccessFile /home/piwik/svn_access_file
+  AuthType Basic
+  AuthName "Piwik subversion repository"
+  AuthUserFile /home/piwik/trac.htdigest
+  Require valid-user
+  Satisfy Any
+  Order allow,deny
+  Allow from all
+</Location>
+
+#<Location "/trac/login">
+#     AuthType Basic
+#     AuthName "Trac login"
+#     AuthUserFile  /home/piwik/users_svn.htpasswd
+#     Require valid-user
+#</Location>
+
+
+<Location /trac>
+   SetHandler mod_python
+   PythonInterpreter main_interpreter
+   PythonHandler trac.web.modpython_frontend 
+   PythonOption TracEnv /home/trac/piwik
+   PythonOption TracUriRoot /trac
+ </Location>
+
+
+</VirtualHost>

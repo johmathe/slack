@@ -1,0 +1,20 @@
+;
+; Zone reverse 192.168.127.0/24
+;
+@		IN	SOA	ns.bsnet. root.bsnet. (
+		2006083101	; Serial
+		3600		; Refresh serveur secondaire toutes les heures
+		900		; Retry (1/4 d'heure)
+		604800 		; Expiration serveur secondaire 1 semaines
+		120 )		; Min TTL (2 minutes)
+
+@		IN	NS	ns.bsnet.
+
+1		IN	PTR	bach.bsnet.
+
+30		IN	PTR	laserps.bsnet.
+31		IN	PTR	deskjet.bsnet.
+
+137		IN	PTR	zeus.bsnet.
+138		IN	PTR	dhcp-1.bsnet.
+139		IN	PTR	dhcp-1.bsnet.

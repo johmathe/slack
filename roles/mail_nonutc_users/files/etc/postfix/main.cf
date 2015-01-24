@@ -1,0 +1,47 @@
+# mail configuration for nonutc
+
+smtpd_banner = $myhostname ESMTP $mail_name (Nonutc Users)
+biff = no
+
+# appending .domain is the MUA's job.
+append_dot_mydomain = no
+
+# Uncomment the next line to generate "delayed mail" warnings
+#delay_warning_time = 4h
+message_size_limit = 20480000
+myhostname = mx1.nonutc.fr
+alias_maps = hash:/etc/aliases
+alias_database = hash:/etc/aliases
+myorigin = /etc/mailname
+mydestination = mx1.nonutc.fr, nonutc.fr, protagoras.nonutc.fr, localhost.nonutc.fr, localhost
+relayhost = 
+smtpd_sasl_path = smtpd
+smtpd_recipient_restrictions = 
+        permit_mynetworks 
+        permit_sasl_authenticated 
+        reject_unauth_destination
+
+smtpd_use_tls = yes
+smtpd_tls_auth_only = yes
+smtpd_tls_key_file = /etc/postfix/certs/nonutc-key.pem
+smtpd_tls_cert_file = /etc/postfix/certs/nonutc-cert.pem
+smtpd_tls_CAfile = /etc/postfix/certs/cacert.pem
+smtpd_tls_received_header = yes
+smtpd_tls_session_cache_timeout = 3600s
+tls_random_source = dev:/dev/urandom
+smtp_use_tls = yes
+smtp_tls_note_starttls_offer = yes
+smtp_tls_key_file = /etc/postfix/certs/nonutc-key.pem
+smtp_tls_cert_file = /etc/postfix/certs/nonutc-cert.pem
+smtpd_tls_ask_ccert = yes
+smtpd_tls_req_ccert = no
+
+
+smtpd_sasl_auth_enable = yes
+smtpd_sasl_authenticated_header = yes
+broken_sasl_auth_clients = yes
+mynetworks = 127.0.0.0/8 
+mailbox_command = procmail -a "$EXTENSION"
+mailbox_size_limit = 0
+recipient_delimiter = - 
+inet_interfaces = all

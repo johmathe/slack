@@ -1,0 +1,27 @@
+<VirtualHost *>
+        ServerAdmin sysops@nonutc.fr
+
+        ServerName  dsfw.nonutc.fr
+        DocumentRoot /home/www/projects/dsfw
+        <Directory />
+                Options Indexes FollowSymLinks
+                AllowOverride None
+        </Directory>
+
+        <Directory /home/www/projects/dsfw >
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride None
+                Order allow,deny
+                allow from all
+        </Directory>
+
+        ErrorLog /var/log/apache2/error.log
+
+        # Possible values include: debug, info, notice, warn, error, crit,
+        # alert, emerg.
+        LogLevel warn
+
+        CustomLog /var/log/apache2/access.log combined
+        ServerSignature Off
+
+</VirtualHost>

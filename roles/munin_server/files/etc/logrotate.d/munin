@@ -1,0 +1,35 @@
+/home/munin/log/munin-update.log {
+	daily
+	missingok
+	rotate 7
+	compress
+	notifempty
+	create 640 munin adm
+}
+
+/home/munin/log/munin-graph.log {
+	daily
+	missingok
+	rotate 7
+	compress
+	notifempty
+	create 640 munin adm
+}
+
+/home/munin/log/munin-html.log {
+	daily
+	missingok
+	rotate 7
+	compress
+	notifempty
+	create 640 munin adm
+}
+
+/home/munin/log/munin-limits.log {
+	daily
+	missingok
+	rotate 7
+	compress
+	notifempty
+	create 640 munin adm
+}

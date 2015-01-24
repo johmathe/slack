@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# postgresql prinstall script
+#
+# Actually installs the packages
+
+apt-get install -qq postgresql postgresql-client

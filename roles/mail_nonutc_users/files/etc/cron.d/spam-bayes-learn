@@ -1,0 +1,1 @@
+0 2 * * * root /etc/cron.d/scripts/sa-learn

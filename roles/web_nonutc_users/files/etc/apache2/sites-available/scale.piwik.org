@@ -1,0 +1,16 @@
+<VirtualHost *>
+  ServerAdmin sysops@nonutc.fr
+  ServerName scale.piwik.org
+
+  RedirectMatch ^/$ /trac
+
+  DocumentRoot /home/trac-piwikscale/
+
+# <Location /trac>
+#  SetHandler mod_python
+#   PythonHandler trac.web.modpython_frontend
+#   PythonOption TracEnv /home/trac-piwikscale
+#   PythonOption TracUriRoot /trac
+# </Location>
+
+</VirtualHost>

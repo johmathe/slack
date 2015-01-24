@@ -1,0 +1,150 @@
+# This is the right place to customize your installation of SpamAssassin.
+#
+# See 'perldoc Mail::SpamAssassin::Conf' for details of what can be
+# tweaked.
+#
+# Only a small subset of options are listed below
+#
+###########################################################################
+
+#   Add *****SPAM***** to the Subject header of spam e-mails
+#
+rewrite_header Subject *****SPAM*****
+
+
+#   Save spam messages as a message/rfc822 MIME attachment instead of
+#   modifying the original message (0: off, 2: use text/plain instead)
+#
+report_safe 0
+
+
+#   Set which networks or hosts are considered 'trusted' by your mail
+#   server (i.e. not spammers)
+#
+# trusted_networks 212.17.35.
+
+
+#   Set file-locking method (flock is not safe over NFS, but is faster)
+#
+# lock_method flock
+
+
+#   Set the threshold at which a message is considered spam (default: 5.0)
+#
+required_score 2.0
+
+
+#   Use Bayesian classifier (default: 1)
+#
+use_bayes 1
+
+
+#   Bayesian classifier auto-learning (default: 1)
+#
+bayes_auto_learn 1
+
+# Whitelists :
+whitelist_from  *@utc.fr
+whitelist_from  *@nonutc.fr
+whitelist_from  *@hds.utc.fr
+whitelist_from  *@google.com
+
+#   Set headers which may provide inappropriate cues to the Bayesian
+#   classifier
+#
+# bayes_ignore_header X-Bogosity
+# bayes_ignore_header X-Spam-Flag
+# bayes_ignore_header X-Spam-Status
+
+whitelist_from abuse@rcs-rds.ro
+whitelist_from abuse@rdsnet.ro
+whitelist_from admins@nonutc.fr
+whitelist_from bonnetst@nonutc.fr
+whitelist_from bonnetst@utc.fr
+whitelist_from bvidolov@hds.utc.fr
+whitelist_from demiras@hds.utc.fr
+whitelist_from erwan.dupont@utc.fr
+whitelist_from fabien.carrion@gmail.com
+whitelist_from fahed.abdallah@hds.utc.fr
+whitelist_from florent.monthel@internet-creation.fr
+whitelist_from guillaume.barbaud@tremplin-utc.net
+whitelist_from jeremy.palmier@etu.utc.fr
+whitelist_from jerome.demiras@hds.utc.fr
+whitelist_from jlequeux@nonutc.fr
+whitelist_from johan.mathe@centrepompidou.fr
+whitelist_from johan.mathe@gmail.com
+whitelist_from johan.mathe@google.com
+whitelist_from johan.mathe@nonutc.fr
+whitelist_from johmathe@nonutc.fr
+whitelist_from khlifman@hds.utc.fr
+whitelist_from laph95@gmail.com
+whitelist_from laurent.philippe@tremplin-utc.net
+whitelist_from louise.loizillon@free.fr
+whitelist_from maged.jabbour@hds.utc.fr
+whitelist_from mandonse@gmail.com
+whitelist_from marjorie.coulin@gmail.com
+whitelist_from maxime.robache@nonutc.fr
+whitelist_from maxime.robache@veoliaeau.fr
+whitelist_from mjabbour@hds.utc.fr
+whitelist_from mrobache@etu.utc.fr
+whitelist_from mrobache@nonutc.fr
+whitelist_from pavol.barger@hds.utc.fr
+whitelist_from philippe.bonnifait@hds.utc.fr
+whitelist_from qbellenoue@etu.utc.fr
+whitelist_from romain.herault@hds.utc.fr
+whitelist_from sbonnet@hds.utc.fr
+whitelist_from scloputre@gmail.com
+whitelist_from stephane.bonnet@hds.utc.fr
+whitelist_from stephane.bonnet@nonutc.fr
+whitelist_from stephane.bonnet@utc.fr
+whitelist_from stephanesc@hotmail.com
+whitelist_from stephanie.cloputre@socgen.com
+whitelist_from 5000@utc.fr
+whitelist_from apmartinez@google.com
+whitelist_from bonnetst@nonutc.fr
+whitelist_from cassie@google.com
+whitelist_from cdeneen@sn.com
+whitelist_from daimonfrei@gmail.com
+whitelist_from efernand@etu.utc.fr
+whitelist_from elise.guiguen@gmail.com
+whitelist_from fran.fdl@dbmail.com
+whitelist_from gbarbaud@etu.utc.fr
+whitelist_from gtorrent@mediapro.es
+whitelist_from guillaume.barbaud@tremplin-utc.net
+whitelist_from helmut@google.com
+whitelist_from internal@piwik.org
+whitelist_from jlequeux@etu.utc.fr
+whitelist_from jng@net-iris.fr
+whitelist_from johan.mathe@etu.utc.fr
+whitelist_from johan.mathe@nonutc.fr
+whitelist_from johan.mathe@tremplin-utc.net
+whitelist_from johmathe@google.com
+whitelist_from johmathe@nonutc.fr
+whitelist_from louise.loizillon@free.fr
+whitelist_from louise.loizillon@gmail.com
+whitelist_from louise.loizilon@hotmail.fr
+whitelist_from lpowell@google.com
+whitelist_from maria.litvintseva@bnpparibas.com
+whitelist_from marion.souil@tremplin-utc.net
+whitelist_from matthieu.aubry@gmail.com
+whitelist_from maxime.robache@nonutc.fr
+whitelist_from michael.joyner@infosearchmedia.com
+whitelist_from mj@infosearchmedia.com
+whitelist_from mrobache@etu.utc.fr
+whitelist_from nicolas.buiron@utc.fr
+whitelist_from pfe@nonutc.fr
+whitelist_from prougier@ina.fr
+whitelist_from roel.willems@gmail.com
+whitelist_from stephane.bonnet@gmail.com
+whitelist_from stephane.bonnet@utc.fr
+whitelist_from todd@dlist.com
+whitelist_from ulfims@dagdigdug.com
+whitelist_from vincent.puig@centrepompidou.fr
+whitelist_from xavier.lemarchand@ina.fr
+whitelist_from xavier.sirven@gmail.com
+whitelist_from ytordjman@corp.free.fr
+whitelist_from *@ovh.com
+whitelist_from *@etu.utc.fr
+whitelist_from *@tremplin-utc.net
+whitelist_from *@tele2.fr
+whitelist_from *@neuf.fr

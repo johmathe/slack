@@ -1,0 +1,6 @@
+#!/bin/bash
+
+puppetd --server protagoras.nonutc.fr --waitforcert 60 --test
+echo "Remember to sign the cert on the puppet master"
+HOST=`uname -n`
+echo "puppetca --sign $HOST"

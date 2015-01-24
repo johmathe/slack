@@ -1,0 +1,6 @@
+#!/bin/bash
+# Needed to launched twice cause of a debian bug
+
+killall -9 ntpd
+sleep 2
+/etc/init.d/openntpd start

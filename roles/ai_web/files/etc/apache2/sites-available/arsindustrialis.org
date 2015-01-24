@@ -1,0 +1,35 @@
+<VirtualHost *>
+	
+  ServerAdmin sysops@nonutc.fr 
+  AccessFileName .htaccess
+  ServerName arsindustrialis.org
+  DocumentRoot /home/arsindus/www
+  
+  <Directory />
+    Options FollowSymLinks
+    AllowOverride All
+  </Directory>
+
+  <Directory /home/arsindus/www >
+    Options Indexes FollowSymLinks MultiViews
+    AllowOverride All
+    Order allow,deny
+    allow from all
+  </Directory>
+
+  ErrorLog /var/log/apache2/error.log
+  LogLevel warn
+  CustomLog /var/log/apache2/access.log combined
+  ServerSignature Off
+  
+  <IfModule mod_userdir.c>
+        UserDir www
+        UserDir disabled root
+
+        <Directory /home/*/www>
+                AllowOverride All
+                Options MultiViews Indexes SymLinksIfOwnerMatch
+        </Directory>
+  </IfModule>
+
+</VirtualHost>

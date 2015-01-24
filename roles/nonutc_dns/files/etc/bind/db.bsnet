@@ -1,0 +1,34 @@
+;
+; Zone bsnet
+;
+@		IN	SOA	ns root (
+		2007090101	; Serial
+		3600		; Refresh serveur secondaire toutes les heures
+		900		; Retry (1/4 d'heure)
+		604800		; Expiration serveur secondaire 4 semaines
+		120 )		; Min. TTL (2 minutes)
+
+; Serveurs de nom
+@		IN	NS	ns
+
+; Serveurs Mail exchange
+@		IN	MX	10	smtp
+
+ns		IN	A	192.168.127.1
+		IN	AAAA	2002:52e6:f81c:f101::1
+smtp		IN	A	192.168.127.1
+		IN	AAAA	2002:52e6:f81c:f101::1
+bach		IN	A	192.168.127.1
+		IN	AAAA	2002:52e6:f81c:f101::1
+
+laserps		IN	A	192.168.127.30
+deskjet		IN	A	192.168.127.31
+
+zeus		IN	A	192.168.127.50
+
+www		IN	CNAME	bach
+cvs		IN	CNAME	bach
+kerberos	IN	CNAME	bach
+kerberos-1	IN	CNAME	zeus
+ldap		IN	CNAME	bach
+

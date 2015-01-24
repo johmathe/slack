@@ -1,0 +1,4 @@
+#!/bin/bash
+apt-get update
+apt-get upgrade
+apt-get -qq install fortunes mc sudo vim exuberant-ctags most screen language-pack-en-base 

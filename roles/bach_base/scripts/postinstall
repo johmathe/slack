@@ -1,0 +1,59 @@
+#!/bin/bash
+
+IFCONFIG=/sbin/ifconfig
+HOST=/usr/bin/host
+HOSTNAME=/bin/hostname
+IF=eth0
+
+#
+# Update /etc/hostname and /etc/hosts with DNS info
+#
+echo -n "Setting hostname..."
+
+# Get the host ipv4 address
+ip=`$IFCONFIG $IF | sed -n 's/.* addr:\([0-9\.]*\) .*/\1/p'`
+[ "x${ip}" == x ] && echo "Unable to determine the host name." && exit 1;
+
+# Get the fqdn from DNS
+answer=`$HOST $ip`
+if [ $? == 0 ]; then
+  fqdn=`echo $answer | sed -e 's/.* pointer \(.*\)./\1/'`
+  host=`echo $fqdn | sed -e 's/\([A-Za-z0-9\-]*\).*/\1/'`
+
+  cp /etc/hostname /etc/hostname.orig
+  echo $host > /etc/hostname
+  chmod 655 /etc/hostname
+  $HOSTNAME $host
+  cp /etc/hosts /etc/hosts.orig
+  grep $ip /etc/hosts > /dev/null
+  if [ $? == 0 ]; then
+    # Escape the ip
+    ip_esc=`echo $ip | sed -e "s/\./\\./"`
+    #Append the fqdn and simple host name to the /etc/hosts file
+    sed -i -e "s/$ip_esc\(.*\)/$ip\t$fqdn $host\1/" /etc/hosts
+  else
+    # Insert the new line
+    sed -i -e "/127\.0\.0\.1/ a $ip\t$fqdn $host" /etc/hosts
+  fi
+
+  echo $fqdn
+else
+  echo "Unable to determine the host name." && exit 1;
+fi
+
+
+# Enable quotas and acls on /home
+echo -n "Enabling acls on /home..."
+
+cp /etc/fstab /etc/fstab.orig
+sed -i -e "\/home/ s/defaults/defaults,acl,usrquota,grpquota/" /etc/fstab
+if [ $? == 0 ]; then
+	mount -o remount /home
+  service quota start
+	echo ok.
+	exit 0;
+else
+	echo failed. Restoring backup.
+	cp /etc/fstab.orig /etc/fstab
+	exit 1;
+fi

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "reloading apparmor"
+invoke-rc.d apparmor reload
+echo "db directory is /home/mysql, think about updating/cleaning/restoring it."

@@ -1,0 +1,17 @@
+<VirtualHost *>
+	ServerAdmin root@nonutc.fr 
+  ServerName  radio.nonutc.fr 
+  ServerAlias radio.nonutc.fr 
+	#ProxyPass / http://radio.nonutc.fr:8000/
+	#ProxyPassReverse / http://radio.nonutc.fr:8000/
+
+	ErrorLog /var/log/apache2/error.log
+
+	# Possible values include: debug, info, notice, warn, error, crit,
+	# alert, emerg.
+	LogLevel warn
+
+	CustomLog /var/log/apache2/access.log combined
+	ServerSignature Off
+
+</VirtualHost>

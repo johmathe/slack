@@ -1,0 +1,22 @@
+# See /usr/share/postfix/main.cf.dist for a commented, more complete version
+
+smtpd_banner = $myhostname ESMTP $mail_name 
+biff = no
+
+# appending .domain is the MUA's job.
+append_dot_mydomain = no
+
+# Uncomment the next line to generate "delayed mail" warnings
+#delay_warning_time = 4h
+message_size_limit = 20480000
+myhostname = mail.arsindustrialis.org
+alias_maps = hash:/etc/aliases
+alias_database = hash:/etc/aliases
+myorigin = /etc/mailname
+mydestination = arsindustrialis.org, mail.arsindutrialis.org, ks31613.kimsufi.com, localhost
+relayhost =
+unknown_local_recipient_reject_code = 550
+mynetworks = 127.0.0.0/8
+mailbox_size_limit = 0
+recipient_delimiter = -
+inet_interfaces = all
