@@ -58,7 +58,7 @@ if [ $GPU_DETECTED -gt "0" ]; then
   CUDA_URL="http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/cuda-repo-ubuntu1404_7.5-18_amd64.deb"
   CUDA_FILE="/tmp/cuda_install.deb"
   curl http://us.download.nvidia.com/XFree86/Linux-x86_64/352.41/NVIDIA-Linux-x86_64-352.41.run -o NVIDIA-Linux-x86_64-352.41.run
-  sh NVIDIA-Linux-x86_64-352.41.run || true
+  sh NVIDIA-Linux-x86_64-352.41.run -q -a -n -s || true
   curl ${CUDA_URL} -o ${CUDA_FILE}
   dpkg -i ${CUDA_FILE}
   rm -f ${CUDA_FILE}
