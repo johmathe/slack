@@ -99,3 +99,5 @@ if [ $GPU_DETECTED -gt "0" ]; then
     popd # ${SRC_PATH}
   fi
 fi
+
+sudo apt-get remove --purge nvidia-352 nvidia-352-dev nvidia-352-uvm nvidia-modprobe nvidia-opencl-icd-352 nvidia-settings
