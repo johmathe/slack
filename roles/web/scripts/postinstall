@@ -1,7 +1,8 @@
 #!/bin/bash
-sites_enabled="paulinelecerf.com dsfw term films bivaudda julhirel maberetz default elias.showk  faubrysa  jlequeux	marc	slievain  term		  cfouchet		  default-ssl  gbarbaud  axelleetjulia.com johmathe	marsouil coloursofimagination.com  dlanguig     factux	    ihs  mrobache  radio    shotdetect  tcavalie projetx sensiwatt.nonutc.fr scale.piwik.org willy webmail.nonutc.fr gpiffaul.nonutc.fr alpha.nonutc.fr chantiers.nonutc.fr malamare.nonutc.fr nicleroy.nonutc.fr video.nonutc.fr ai.nonutc.fr mublog.nonutc.fr sustainable-developer.nonutc.fr sylvainlapoix.com leezic.nonutc.fr flo-et-nico.com bubbleen.com photo.nonutc.fr johmathe.name johmathe-new.nonutc.fr"
+sites_enabled="default      gpiffaul.nonutc.fr  johmathe       johmathe-new.nonutc.fr  photos      tcavalie         www
+default-ssl  jlequeux            johmathe.name  photo.nonutc.fr         shotdetect  video.nonutc.fr"
 sites_disabled=""
-modules="ssl rewrite dav dav_svn"
+modules="rewrite"
 for module in $modules; do
   a2enmod $module
 done
