@@ -1,3 +1,0 @@
-#!/bin/bash
-/etc/init.d/mysql restart
-echo -e "Don't forget to fill the database in /var/lib/mysql\n"

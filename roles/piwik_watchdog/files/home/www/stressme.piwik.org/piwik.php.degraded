@@ -1,5 +1,0 @@
-<?php
-$trans_gif_64 = "R0lGODlhAQABAJEAAAAAAP///////wAAACH5BAEAAAIALAAAAAABAAEAAAICVAEAOw==";
-header("Content-type: image/gif");
-print(base64_decode($trans_gif_64));
-?>

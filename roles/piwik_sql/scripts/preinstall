@@ -1,3 +1,0 @@
-#!/bin/bash -e
-
-apt-get install -qq mysql-server-5.0 

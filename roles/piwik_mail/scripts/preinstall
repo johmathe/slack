@@ -1,3 +1,0 @@
-#!/bin/bash
-
-apt-get install --purge -y -qq ssl-cert postfix mailman

@@ -1,2 +1,0 @@
-1 0 * * * www-data /usr/bin/php5 /home/www/piwik/index.php -- "module=API&method=VisitsSummary.getVisits&idSite=1&period=year&date=today&format=original&token_auth=73107f520c2f2502c83e3f2e8bb4d4a0" > /dev/null
-6 0 * * * www-data /usr/bin/php5 /home/www/piwik/index.php -- "module=API&method=VisitsSummary.getVisits&idSite=1&period=week&date=last52&format=xml&token_auth=73107f520c2f2502c83e3f2e8bb4d4a0" > /dev/null

@@ -1,4 +1,0 @@
-#!/bin/bash
-
-getent passwd|grep rsync || adduser --system rsync-slaves
-chsh rsync-slaves -s /bin/sh
