@@ -1,6 +1,6 @@
 #!/bin/bash
-sites_enabled="default      gpiffaul.nonutc.fr  films johmathe  photos      tcavalie         www
-default-ssl  jlequeux            johmathe.name  photo.nonutc.fr         shotdetect"
+sites_enabled="000-default  films johmathe  photos      tcavalie   www
+default-ssl  main johmathe.name  photo.nonutc.fr         shotdetect"
 sites_disabled=""
 modules="rewrite"
 for module in $modules; do
