@@ -1,3 +1,16 @@
 #!/bin/bash
 
-echo "Think about updating the munin db"
+#!/bin/bash
+
+# Enable munin config
+a2enconf munin
+a2enmod rewrite
+
+# Enable nas-related metrics
+
+# Restart services
+service munin-node restart
+service postfix restart
+service apache2 restart
+echo "Think about updating the munin db if you reinstalled"
+echo "the machine and still want to see the old data."
