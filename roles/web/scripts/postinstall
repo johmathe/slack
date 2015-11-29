@@ -1,5 +1,5 @@
 #!/bin/bash
-sites_enabled="000-default  films marsouil johmathe  photos      tcavalie   www
+sites_enabled="000-default  films bonnetst marsouil johmathe  photos      tcavalie   www
 default-ssl  main johmathe.name  photo.nonutc.fr         shotdetect"
 sites_disabled=""
 modules="rewrite"
