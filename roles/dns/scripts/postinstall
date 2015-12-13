@@ -1,0 +1,4 @@
+service dnsmasq restart
+echo "This service requires a STATIC ip address"
+echo "Please edit /etc/network/interfaces with 172.16.1.2 to make"
+echo "the service compatible with the VPN."
