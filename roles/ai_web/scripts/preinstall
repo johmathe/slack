@@ -1,4 +1,0 @@
-#!/bin/bash -e
-
-apt-get install -qq apache2 libapache2-mod-rpaf libapache2-mod-php5 libapache2-mod-wsgi php5-mysql php5-curl php5-imap
-

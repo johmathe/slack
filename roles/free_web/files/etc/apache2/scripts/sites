@@ -1,9 +1,0 @@
-./create_site.sh adserverpro.spoti.com "\/home\/www\/adserver\/adserverpro"
-./create_site.sh developer.spoti.com "\/home\/www\/adserver\/developer"
-./create_site.sh adserverpro2.spoti.com "\/home\/www\/adserver\/adserverpro2"
-./create_site.sh testing.spoti.com "\/home\/www\/adserver\/testing"
-./create_site.sh contents.spoti.com "\/home\/www\/contents"
-./create_site.sh dev3.piwik.org "\/home\/www\/piwik"
-./create_site.sh tracker.spoti.com "\/home\/www\/piwik"
-./create_site.sh stats.spoti.com "\/home\/www\/adserver\/stats"
-

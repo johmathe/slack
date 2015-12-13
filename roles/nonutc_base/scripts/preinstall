@@ -1,4 +1,7 @@
 #!/bin/bash
+
+addgroup sysops
+adduser johmathe sysops
 apt-get update
 apt-get upgrade
-apt-get -qq install fortunes mc sudo vim exuberant-ctags most screen language-pack-en-base 
+apt-get -qq install fortunes mc sudo vim exuberant-ctags most screen language-pack-en-base

@@ -1,3 +1,0 @@
-#!/bin/bash
-
-apt-get install -qq mysql-server-5.5 phpmyadmin mysql-common

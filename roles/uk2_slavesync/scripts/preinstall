@@ -1,9 +1,0 @@
-#!/bin/bash
-mkdir -p ~www-data/.ssh/
-test -e ~www-data/.ssh/id_rsa.pub || su www-data -c "ssh-keygen -t rsa"
-chown -R www-data ~www-data/
-cp ~www-data/.ssh/id_rsa.pub 
-mkdir /home/www
-chown -R www-data /home/www/
-
-echo "Remember to put the public key on the master (rsync-slaves users home .ssh/authorized_keys2) \nto allow automating rsync"

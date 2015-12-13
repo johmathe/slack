@@ -1,3 +1,0 @@
-#!/bin/bash
-
-sudo su www-data -c "/home/www/scripts/build.sh"

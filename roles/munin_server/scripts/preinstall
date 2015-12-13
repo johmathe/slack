@@ -1,3 +1,17 @@
 #!/bin/bash
 
-apt-get install -y -qq munin
+#!/bin/bash
+
+MUNIN_DIR='/home/munin'
+WWW_DIR='/home/munin/www'
+DB_DIR='/home/munin/db'
+LOG_DIR='/home/munin/log'
+
+apt-get install -y -qq postfix mailutils munin munin-node apache2
+
+# Create directories in /home and make sure permissions are ok.
+mkdir -p ${LOG_DIR} ${WWW_DIR} ${DB_DIR}
+chown -R munin:munin ${MUNIN_DIR} ${WWW_DIR} ${DB_DIR}
+chmod -R g+rx ${MUNIN_DIR}
+# Make sure webserver can read munin data
+adduser www-data munin
