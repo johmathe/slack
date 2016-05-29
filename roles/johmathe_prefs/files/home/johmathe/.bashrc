@@ -50,3 +50,9 @@ esac
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
+
+# The next line updates PATH for the Google Cloud SDK.
+source '/home/johmathe/google-cloud-sdk/path.bash.inc'
+
+# The next line enables shell command completion for gcloud.
+source '/home/johmathe/google-cloud-sdk/completion.bash.inc'
